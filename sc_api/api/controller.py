@@ -1,6 +1,5 @@
 from db.cart import addCart, getCart, updateCart
-from db.item import getItem
-# cart_trolly = Shopping_Cart_Trolly()
+from db.item import getItem, getAllItems
 
 def post_cart():
     
@@ -19,10 +18,6 @@ def put_cart(cartId: str, itemId: str):
     if not item:
         return {'Error': f'Item "{itemId}" not found'}, 404
 
-    if 'items' in cart: 
-        cart.items.append(item)
-    else:
-        cart['items'] = [itemId]
     
     updateCart(cartId, cart)
 
@@ -33,5 +28,15 @@ def get_cart(cartId: str):
     cart = getCart(cartId)
     if not cart:
         return {'Error': f'Cart "{carId}" not found'}
+     if 'items' in cart: 
+         cart[]
+
+    
+    for i in getAllItems(): 
+
+   
+        for i in items:
+            
+            getItem(itemId)[]
 
     return cart, 200

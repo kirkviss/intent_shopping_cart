@@ -12,14 +12,14 @@ def getCart( cartId):
         return carts[cartId]
     return None
 
-def updateCart(cartId, newCart):
+def updateCartItems(cartId: str, items: dict):
     carts = readCarts()
     
     if cartId in carts:
-        newCart['id'] = cartId 
-        carts[cartId] = newCart
+        carts[cartId]['items'] = items
         writeCarts(newCart)
         return newCart
+
     return None
 
 def addCart():
@@ -30,7 +30,8 @@ def addCart():
     while (newId in carts):
         newId = uuid.uuid1()
     cart = {
-        'id': newId
+        'id': newId,
+        'items': {}
     }
     carts[newId] = cart
     writeCarts(carts)
