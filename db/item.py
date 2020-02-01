@@ -10,6 +10,6 @@ def getAllItems():
 def getItem(itemId):
     items = getAllItems()
     for item in items:
-        if item['id'] is itemId:
+        if item['id'] == itemId:
             return item
     return None

@@ -17,8 +17,8 @@ def updateCartItems(cartId: str, items: dict):
     
     if cartId in carts:
         carts[cartId]['items'] = items
-        writeCarts(newCart)
-        return newCart
+        writeCarts(carts)
+        return carts[cartId]
 
     return None
 
