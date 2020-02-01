@@ -1,0 +1,90 @@
+swagger: "2.0"
+info:
+  description: "API for all things shopping cart"
+  version: "0.0.0"
+  title: "<Intent> Shopping Cart API"
+  contact: 
+    email: "kirkviss@gmail.com"
+
+basePath: "/v0"
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+
+paths:
+ 
+  /cart:
+    
+    post:
+    
+      operationId: "api.controller.post_cart"
+      summary: "Add cart"
+      description: ""
+      responses:
+        200:
+          description: 'Cart successfully created'
+          schema:
+            $ref: "#/definitions/cart_return"
+        405:
+          description: "Invalid input"
+
+
+  /cart/{cartId}:
+   
+    get:
+      
+      summary: "Get cart info from API"
+      operationId: "api.controller.get_cart"
+   
+      parameters:
+        - name: 'cartId'
+          in: 'path'
+          required: true
+          type: 'string'
+
+      responses: 
+        200:
+          description: 'Get the cart and all items associated with them'
+          schema: 
+            type: 'object'
+            properties:
+              cart_id:
+                type: 'string'
+              cart_total:
+                type: 'integer'
+              cart_items:
+                type: 'array'
+                items:
+                  type: 'string'
+    put:
+      summary: 'Update an existing cart'
+      operationId: 'api.controller.put_cart'
+
+      parameters:
+        - name: 'cartId'
+          in: 'path'
+          required: true
+          type: 'string'
+        - name: 'itemId'
+          in: "query"
+          required: true
+          type: 'string'
+
+      responses: 
+        200:
+          description: 'Existing cart is updated with new value'
+          schema:
+           $ref: "#/definitions/cart_return"
+
+definitions: 
+  cart_return:
+    type: 'object'
+    properties: 
+      cart_id:
+        type: 'string'
+      items:
+        type: 'array'
+        items: 
+          type: 'string'
