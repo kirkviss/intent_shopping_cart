@@ -28,7 +28,6 @@ paths:
 
 
   /cart/{cartId}:
-   
     get:
       
       summary: "Get cart info from API"
