@@ -12,7 +12,6 @@ consumes:
 produces:
   - "application/json"
 
-
 paths:
   /cart:
     post:
@@ -74,6 +73,17 @@ paths:
           description: 'Existing cart is updated with new value'
           schema:
            $ref: "#/definitions/cart_return"
+  /items:
+    get:
+      summary: 'Grab all items'
+      operationId: 'api.controller.get_items'
+      responses:
+        200:
+          description: Returns an array of all items currently stored
+          schema:
+            type: array
+            items: 
+              type: object
 
 definitions: 
   cart_return:

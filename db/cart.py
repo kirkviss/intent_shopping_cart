@@ -6,11 +6,17 @@ def seedCarts(amount: str):
     for i in range(0, amount):
         addCart()
 
-def getCart( cartId): 
+def getCart( cartId: str): 
     carts = readCarts()
     if cartId in carts:
         return carts[cartId]
     return None
+
+def cartExists(cartId: str): 
+    carts = readCarts()
+    if cartId in carts:
+        return True
+    return False
 
 def updateCartItems(cartId: str, items: dict):
     carts = readCarts()

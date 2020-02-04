@@ -5,6 +5,7 @@ def post_cart():
     
     return addCart(), 200
 
+
 def put_cart(cartId: str, itemId: str):
     itemId = itemId.upper()
 
@@ -27,6 +28,14 @@ def put_cart(cartId: str, itemId: str):
     updateCartItems(cartId, cart['items'])
 
     return cart, 200
+
+# TODO
+# def deleteCartItem(cartId: str, itemId: str):
+# def deleteCart():
+
+# return all item with in the item db
+def get_items():
+    return getAllItems()
 
 def get_cart(cartId: str): 
     # check if the cart exists in the 'db'
