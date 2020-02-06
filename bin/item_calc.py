@@ -6,16 +6,19 @@ def get_total(cartItems: dict):
     for itemId, amount in cartItems.items():
         item = getItem(itemId)
 
-        # sort by the lowest price
-        sortedDiscounts = sorted(item['volume_discounts'],key=lambda discount: discount['price'])
+        ''' sort by the lowest price ratio, guaranting that the discount with 
+        the lowest price is first in the array '''
+        sortedDiscounts = sorted(item['volume_discounts'],key=lambda discount: discount['number']/discount['price'])
     
+        '''loop through each discount '''
         for vd in sortedDiscounts:
             items_discounted = int(amount/ vd['number'])
+
+            # add the amount of item discounted to
             total +=  items_discounted*vd['price']
    
             amount -= items_discounted * vd['number']
-            print(total)
         
         total += amount * item['unit_price']
 
-    return total
+    return round(total, 2) 

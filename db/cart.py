@@ -37,7 +37,8 @@ def addCart():
         newId = uuid.uuid1()
     cart = {
         'id': newId,
-        'items': {}
+        'items': {},
+        'total':0
     }
     carts[newId] = cart
     writeCarts(carts)

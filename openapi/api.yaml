@@ -29,7 +29,6 @@ paths:
 
   /cart/{cartId}:
     get:
-      
       summary: "Get cart info from API"
       operationId: "api.controller.get_cart"
    
@@ -53,17 +52,32 @@ paths:
                 type: 'array'
                 items:
                   type: 'string'
+
+    delete:
+      summary: 'Delete an existing cart'
+      operationId: 'api.controller.delete_cart'
+      parameters:
+        - name: 'cartId'
+          in: 'path'
+          required: true
+          type: 'string'
+      responses: 
+        200:
+          description: 'Existing cart is updated with new value'
+          schema:
+           $ref: "#/definitions/cart_return"
+
+  /cart/{cartId}/{itemId}:
     put:
       summary: 'Update an existing cart'
       operationId: 'api.controller.put_cart'
-
       parameters:
         - name: 'cartId'
           in: 'path'
           required: true
           type: 'string'
         - name: 'itemId'
-          in: "query"
+          in: "path"
           required: true
           type: 'string'
 
@@ -72,6 +86,27 @@ paths:
           description: 'Existing cart is updated with new value'
           schema:
            $ref: "#/definitions/cart_return"
+
+    delete:
+      summary: 'Delete an item from a the cart'
+      operationId: 'api.controller.delete_cart_item'
+      parameters:
+        - name: 'cartId'
+          in: 'path'
+          required: true
+          type: 'string'
+        - name: 'itemId'
+          in: "path"
+          required: true
+          type: 'string'
+      responses: 
+        200:
+          description: 'Existing cart is updated with new value'
+          schema:
+           $ref: "#/definitions/cart_return"
+
+
+
   /items:
     get:
       summary: 'Grab all items'

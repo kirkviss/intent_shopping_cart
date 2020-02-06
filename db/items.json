@@ -32,5 +32,19 @@
         "description": "Durian",
         "unit_price": 0.15,
         "volume_discounts": []
+    },
+    {
+        "id": "E",
+        "description": "TP",
+        "unit_price": 1.0,
+        "volume_discounts": [
+            {
+                "number": 5,
+                "price": 3
+            },           {
+                "number": 3,
+                "price": 2
+            }
+        ]
     }
 ]
